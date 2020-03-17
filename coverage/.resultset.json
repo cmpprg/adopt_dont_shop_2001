@@ -214,8 +214,21 @@
           1,
           null
         ]
+      },
+      "/Users/ryancamp/turing/2module/projects/adopt_dont_shop_2001/app/models/shelter.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/ryancamp/turing/2module/projects/adopt_dont_shop_2001/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1584484871
+    "timestamp": 1584486418
   }
 }
