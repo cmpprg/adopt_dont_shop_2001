@@ -7,11 +7,11 @@ RSpec.describe "shelters index page", type: :feature do
                                city:    "Golden",
                                state:   "CO",
                                zip:     "80401")
-    shelter_2 = Shelter.create(name:    "Denver Animal Shelter",
-                               address: "1241 W Bayaud Ave",
-                               city:    "Denver",
-                               state:   "CO",
-                               zip:     "80223")
+    shelter_2 = Shelter.create(name:    "Carson Animal Shelter",
+                               address: "216 W Victoria St",
+                               city:    "Gardena",
+                               state:   "CA",
+                               zip:     "90248")
 
     visit '/shelters'
 

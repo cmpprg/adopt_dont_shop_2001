@@ -216,6 +216,27 @@
           null
         ]
       },
+      "/Users/ryancamp/turing/2module/projects/adopt_dont_shop_2001/spec/features/shelters/users_can_see_one_shelter_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
       "/Users/ryancamp/turing/2module/projects/adopt_dont_shop_2001/app/models/shelter.rb": {
         "lines": [
           1,
@@ -246,6 +267,6 @@
         ]
       }
     },
-    "timestamp": 1584486896
+    "timestamp": 1584490888
   }
 }
