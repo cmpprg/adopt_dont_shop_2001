@@ -1,3 +1,6 @@
-<h1><%= @shelter.name %></h1>
-<p id='address'>Address: <%= @shelter.address %></p>
-<p id="zone_info"><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+<h1 id='title'><%= @shelter.name %></h1>
+
+<section id='address'>
+  <p>Address: <%= @shelter.address %></p>
+  <p><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+</section>

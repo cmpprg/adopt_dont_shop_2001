@@ -18,4 +18,18 @@ RSpec.describe "shelters index page", type: :feature do
     expect(page).to have_content(shelter_1.name)
     expect(page).to have_content(shelter_2.name)
   end
+
+  it 'can click a link that takes you to new shelter form' do
+    visit '/shelters'
+
+    within('#new_shelter_link') do
+      expect(page).to have_content('New Shelter')
+    end
+    expect(page).to have_link('New Shelter')
+
+    click_link('New Shelter')
+
+    expect(current_path).to eql('/shelters/new')
+  end
+
 end
