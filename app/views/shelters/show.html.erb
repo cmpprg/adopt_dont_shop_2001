@@ -6,3 +6,4 @@
 </section>
 
 <a href="/shelters/<%= @shelter.id %>/edit"><p>Update Shelter</p></a>
+<%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete -%>
