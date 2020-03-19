@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "shelters index page", type: :feature do
   it "can see all shelters names" do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
-                               address: " 580 McIntyre St",
+                               address: "580 McIntyre St",
                                city:    "Golden",
                                state:   "CO",
                                zip:     "80401")
@@ -21,11 +21,6 @@ RSpec.describe "shelters index page", type: :feature do
 
   it 'can click a link that takes you to new shelter form' do
     visit '/shelters'
-
-    within('#new_shelter_link') do
-      expect(page).to have_content('New Shelter')
-    end
-    expect(page).to have_link('New Shelter')
 
     click_link('New Shelter')
 
