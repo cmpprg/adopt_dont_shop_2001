@@ -1,11 +1,11 @@
-<h1>Create a New Shelter</h1>
-<section class="new_shelter_form">
-  <%= form_tag "/shelters", method: :post do %>
+<h1>Update the Shelter Information:</h1>
+<section class="update_form">
+  <%= form_tag "/shelters/#{params[:id]}", method: :patch do %>
     <%= label_tag :name %><br/>
     <%= text_field_tag :name %><br/>
 
     <%= label_tag :address %><br/>
-    <%= text_field_tag :address, nil, placeholder:'address' %><br/>
+    <%= text_field_tag :address %><br/>
 
     <%= label_tag :city %><br/>
     <%= text_field_tag :city %><br/>
@@ -15,7 +15,7 @@
 
     <%= label_tag :zip %><br/>
     <%= text_field_tag :zip %><br/>
-
-    <%= submit_tag 'Create Shelter' %>
+    
+    <%= submit_tag "Submit Updates" %>
   <% end %>
 </section>

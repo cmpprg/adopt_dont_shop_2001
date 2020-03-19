@@ -30,6 +30,12 @@ RSpec.describe 'shelter by id show page', type: :feature do
 
     visit "/shelters/#{shelter_1.id}"
 
-    expect(page).to have_link(:update_shelter)
+    expect(page).to have_link('Update Shelter')
+
+    click_link('Update Shelter')
+
+    expect(current_path).to eql("/shelters/#{shelter_1.id}/edit")
+
+    
   end
 end

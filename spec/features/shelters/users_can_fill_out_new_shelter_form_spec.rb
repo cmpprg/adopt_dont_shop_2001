@@ -26,7 +26,6 @@ RSpec.describe 'new shelter form page', type: :feature do
       click_button('Create Shelter')
     end
     expect(current_path).to eql('/shelters')
-    require 'pry'; binding.pry
     expect(page).to have_content(Shelter.last.name)
   end
 end
