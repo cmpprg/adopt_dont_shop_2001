@@ -1,0 +1,10 @@
+<h1>All Pets</h1>
+
+<% @pets.each do |pet| %>
+  <%= image_tag pet.image_url, size: "320x200" %>
+  <p><%= pet.name %></p>
+  <p><%= pet.description %></p>
+  <p><%= pet.approximate_age %></p>
+  <p><%= pet.sex %></p>
+  <p>Current Shelter: <%= pet.shelter.name %></p>
+<% end %>
