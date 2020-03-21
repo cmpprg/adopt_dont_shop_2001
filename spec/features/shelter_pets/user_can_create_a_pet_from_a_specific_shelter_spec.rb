@@ -24,11 +24,14 @@ RSpec.describe "As a user", type: :feature do
     new_pet = shelter_1.pets.last
 
     expect(current_path).to eql("/shelters/#{shelter_1.id}/pets")
-
-    expect(page).to have_css("#petimg-#{new_pet.id}")
-    expect(page).to have_content(new_pet.name)
-    expect(page).to have_content(new_pet.approximate_age)
-    expect(page).to have_content(new_pet.sex)
-    expect(new_pet.adoption_status).to eql("adoptable")
+    within(".pets_list") do
+      within("#pet_list_item_#{new_pet.id}") do
+        expect(find("img")["src"]).to eql(new_pet.image_url)
+        expect(page).to have_content(new_pet.name)
+        expect(page).to have_content(new_pet.approximate_age)
+        expect(page).to have_content(new_pet.sex)
+        expect(new_pet.adoption_status).to eql("adoptable")
+      end
+    end
   end
 end

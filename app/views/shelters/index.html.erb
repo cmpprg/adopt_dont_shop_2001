@@ -1,9 +1,9 @@
-<section class="list">
+<section class="shelter_list">
   <% @shelters.each do |shelter| %>
-    <section id="list_item_<%= shelter.id %>">
+    <section id="shelter_list_item_<%= shelter.id %>">
       <h2 style="display:inline"><%= shelter.name %></h2>
-      <%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit", id: "update" %>
-      <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete, id: "delete" %>
+      <%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %>
+      <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %>
     </section>
   <% end %>
 </section>

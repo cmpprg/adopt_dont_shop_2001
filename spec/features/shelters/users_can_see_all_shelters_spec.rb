@@ -15,10 +15,10 @@ RSpec.describe "As a user", type: :feature do
 
     visit '/shelters'
 
-    within("#list_item_#{shelter_1.id}") do
+    within("#shelter_list_item_#{shelter_1.id}") do
       expect(page).to have_content(shelter_1.name)
     end
-    within("#list_item_#{shelter_2.id}") do
+    within("#shelter_list_item_#{shelter_2.id}") do
       expect(page).to have_content(shelter_2.name)
     end
 
@@ -46,7 +46,7 @@ RSpec.describe "As a user", type: :feature do
 
     visit "/shelters"
 
-    within("#list_item_#{shelter_1.id}") do
+    within("#shelter_list_item_#{shelter_1.id}") do
       click_link('Update Shelter')
 
       expect(current_path).to eql("/shelters/#{shelter_1.id}/edit")
@@ -54,7 +54,7 @@ RSpec.describe "As a user", type: :feature do
 
     visit '/shelters'
 
-    within("#list_item_#{shelter_2.id}") do
+    within("#shelter_list_item_#{shelter_2.id}") do
       click_link('Update Shelter')
 
       expect(current_path).to eql("/shelters/#{shelter_2.id}/edit")
@@ -75,17 +75,17 @@ RSpec.describe "As a user", type: :feature do
 
     visit "/shelters"
 
-    within(".list") do
+    within(".shelter_list") do
       expect(page).to have_content(shelter_1.name)
       expect(page).to have_content(shelter_2.name)
     end
-    within("#list_item_#{shelter_1.id}") do
+    within("#shelter_list_item_#{shelter_1.id}") do
       expect(page).to have_link('Delete Shelter')
     end
-    within("#list_item_#{shelter_2.id}") do
+    within("#shelter_list_item_#{shelter_2.id}") do
       expect(page).to have_link('Delete Shelter')
     end
-    within("#list_item_#{shelter_1.id}") do
+    within("#shelter_list_item_#{shelter_1.id}") do
       click_on("Delete Shelter")
     end
 

@@ -1,8 +1,21 @@
 <h1>Adoptable Pets:</h1>
 <%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %><br/>
-<% @shelter.adoptable_pets.each do |pet| %>
-  <%= image_tag pet.image_url, id: "petimg-#{pet.id}", size: "200x200" %>
-  <p>Name: <%= pet.name %></p>
-  <p>Age: <%= pet.approximate_age %></p>
-  <p>Sex: <%= pet.sex %></p>
-<% end %>
+<section class="pets_list">
+  <% @shelter.adoptable_pets.each do |pet| %>
+    <section id="pet_list_item_<%= pet.id %>">
+      <div class="pet_img">
+        <%= image_tag pet.image_url, size: "100x100"%>
+      </div>
+      <div class="pet_info">
+      <p><%= pet.name %></p>
+        <p><%= pet.description %></p>
+        <p><%= pet.approximate_age %></p>
+        <p><%= pet.sex %></p>
+        <p>Current Shelter: <%= pet.shelter.name %></p>
+      </div>
+      <div class="pet_crud_links">
+        <%= link_to "Update Pet", "/pets/#{pet.id}/edit" %>
+      </div>
+    </section>
+  <% end %>
+</section>
