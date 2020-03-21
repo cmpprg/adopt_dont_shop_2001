@@ -7,7 +7,7 @@
         <%= image_tag pet.image_url, size: "100x100"%>
       </div>
       <div class="pet_info">
-      <p><%= pet.name %></p>
+        <a href="/pets/<%= pet.id %>"><p><%= pet.name %></p></a>
         <p><%= pet.description %></p>
         <p><%= pet.approximate_age %></p>
         <p><%= pet.sex %></p>
