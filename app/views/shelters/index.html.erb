@@ -1,7 +1,11 @@
 <section class="list">
   <% @shelters.each do |shelter| %>
-    <h3><%= shelter.name %></h3>
+    <section id="list_item_<%= shelter.id %>">
+      <h2 style="display:inline"><%= shelter.name %></h2>
+      <%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %>
+    </section>
   <% end %>
 </section>
-
-<a id='new_shelter_link' href="/shelters/new"><p>New Shelter</p></a>
+<section class="links">
+  <%= link_to "New Shelter", "/shelters/new" %>
+</section>
