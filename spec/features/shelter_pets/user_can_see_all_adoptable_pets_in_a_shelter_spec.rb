@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "as a user", type: :feature do
+RSpec.describe "as a user on the shelter pets index page", type: :feature do
   it 'i can see all adoptable pets from with a particular shelter' do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: "580 McIntyre St",
@@ -93,5 +93,50 @@ RSpec.describe "as a user", type: :feature do
     end
 
     expect(current_path).to eql("/pets/#{pet_1.id}/edit")
+  end
+
+  it "I can see and use a delete link for each pet" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+
+    pet_1 = shelter_1.pets.create(image_url:        "https://images.unsplash.com/photo-1518900673653-cf9fdd01e430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+                                   name:            "Tom",
+                                   description:     "Squirrel",
+                                   approximate_age: "4",
+                                   sex:             "Male",
+                                   adoptable:       true,)
+    pet_2 = shelter_1.pets.create(image_url:        "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=963&q=80",
+                                   name:            "Jenkyl",
+                                   description:     "Black Cat",
+                                   approximate_age: "2",
+                                   sex:             "Male",
+                                   adoptable:       true,)
+
+
+    visit "/shelters/#{shelter_1.id}/pets"
+
+    within(".pets_list") do
+      within("#pet_list_item_#{pet_1.id}") do
+        expect(page).to have_link("Delete Pet")
+      end
+      within("#pet_list_item_#{pet_2.id}") do
+        expect(page).to have_link("Delete Pet")
+      end
+      within("#pet_list_item_#{pet_1.id}") do
+        click_link("Delete Pet")
+      end
+    end
+
+    expect(current_path).to eql("/pets")
+
+    within(".pets_list") do
+      expect(page).to have_css("#pet_list_item_#{pet_2.id}")
+      expect(page).to have_no_css("#pet_list_item_#{pet_1.id}")
+    end
+
+    expect(Pet.exists?(pet_1.id)).to eql(false)
   end
 end
