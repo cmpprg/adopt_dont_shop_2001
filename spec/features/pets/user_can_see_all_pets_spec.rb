@@ -116,4 +116,28 @@ RSpec.describe "As a user on the pets index page", type: :feature do
 
     expect(Pet.exists?(pet_1.id)).to eql(false)
   end
+
+  it "I can click on pets shelter location name to take me to the shelter show page" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+    pet_1 = shelter_1.pets.create(image_url:       "https://images.unsplash.com/photo-1538083156950-7ad24f318e7c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+                                   name:            "Charlie",
+                                   description:     "Yello Lab",
+                                   approximate_age: "6",
+                                   sex:             "Male",
+                                   adoptable:       true)
+
+    visit "/pets"
+
+    within(".pets_list") do
+      within("#pet_list_item_#{pet_1.id}") do
+        click_link(pet_1.shelter.name)
+      end
+    end
+
+    expect(current_path).to eql("/shelters/#{shelter_1.id}")
+  end
 end

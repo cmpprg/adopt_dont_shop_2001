@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As a user", type: :feature do
+RSpec.describe "As a user on the shelters index page", type: :feature do
   it "I can see all shelters names" do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: "580 McIntyre St",
@@ -75,22 +75,37 @@ RSpec.describe "As a user", type: :feature do
 
     visit "/shelters"
 
-    within(".shelter_list") do
-      expect(page).to have_content(shelter_1.name)
-      expect(page).to have_content(shelter_2.name)
-    end
-    within("#shelter_list_item_#{shelter_1.id}") do
-      expect(page).to have_link('Delete Shelter')
-    end
-    within("#shelter_list_item_#{shelter_2.id}") do
-      expect(page).to have_link('Delete Shelter')
-    end
-    within("#shelter_list_item_#{shelter_1.id}") do
-      click_on("Delete Shelter")
+    within(".shelters_list") do
+      within("#shelter_list_item_#{shelter_2.id}") do
+        expect(page).to have_link('Delete Shelter')
+      end
+
+      within("#shelter_list_item_#{shelter_1.id}") do
+        click_on("Delete Shelter")
+      end
+
+      expect(page).to have_no_css("#shelter_list_item_#{shelter_1.id}")
+      expect(page).to have_css("#shelter_list_item_#{shelter_2.id}")
     end
 
-    expect(page).to have_no_content(shelter_1.name)
     expect(Shelter.exists?(shelter_1.id)).to eql(false)
-    expect(page).to have_content(shelter_2.name)
+  end
+
+  it "I can click on a shelter name to take me to that shelters show page" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+
+    visit "/shelters"
+
+    within(".shelters_list") do
+      within("#shelter_list_item_#{shelter_1.id}") do
+        click_link(shelter_1.name)
+      end
+    end
+
+    expect(current_path).to eql("/shelters/#{shelter_1.id}")
   end
 end
