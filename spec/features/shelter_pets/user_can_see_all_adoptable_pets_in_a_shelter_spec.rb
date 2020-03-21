@@ -55,6 +55,5 @@ RSpec.describe "as a user", type: :feature do
     expect(page).to have_no_content(pet_4.name)
     expect(page).to have_no_content(pet_4.approximate_age)
     expect(page).to have_no_content(pet_4.sex)
-    save_and_open_page
   end
 end
