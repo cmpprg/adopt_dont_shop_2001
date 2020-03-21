@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'shelter by id show page', type: :feature do
-  it 'can show shelters name, address, city, state, and zip' do
+RSpec.describe 'As a user the shelter show page', type: :feature do
+  it 'I can see shelters name, address, city, state, and zip' do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: "580 McIntyre St",
                                city:    "Golden",
@@ -27,7 +27,7 @@ RSpec.describe 'shelter by id show page', type: :feature do
     expect(page).to have_no_content(shelter_2.name)
   end
 
-  it 'can see a update shelter link' do
+  it 'I can see a update shelter link' do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: "580 McIntyre St",
                                city:    "Golden",
@@ -43,7 +43,7 @@ RSpec.describe 'shelter by id show page', type: :feature do
     expect(current_path).to eql("/shelters/#{shelter_1.id}/edit")
   end
 
-  it "can delete a shelter" do
+  it "I can delete a shelter" do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: " 580 McIntyre St",
                                city:    "Golden",
@@ -62,5 +62,21 @@ RSpec.describe 'shelter by id show page', type: :feature do
     expect(current_path).to eql('/shelters')
     expect(page).to have_content("#{shelter_2.name}")
     expect(page).to have_no_content("#{shelter_1.name}")
+  end
+
+  it "I can click on a link in the nav bar that can take me to the pet index" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    within(".navbar") do
+      click_link("Pets Index")
+    end
+
+    expect(current_path).to eql("/pets")
   end
 end

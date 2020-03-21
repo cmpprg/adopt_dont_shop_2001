@@ -108,4 +108,15 @@ RSpec.describe "As a user on the shelters index page", type: :feature do
 
     expect(current_path).to eql("/shelters/#{shelter_1.id}")
   end
+
+  it "I can click on a link in the nav bar that can take me to the pet index" do
+
+    visit "/shelters"
+
+    within(".navbar") do
+      click_link("Pets Index")
+    end
+
+    expect(current_path).to eql("/pets")
+  end
 end

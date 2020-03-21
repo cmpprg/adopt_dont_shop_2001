@@ -1,20 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'new shelter form page', type: :feature do
-  it 'can see form for new shelter' do
-    visit '/shelters/new'
-
-    within('.new_shelter_form') do
-      expect(page).to have_field(:name)
-      expect(page).to have_field(:address)
-      expect(page).to have_field(:city)
-      expect(page).to have_field(:state)
-      expect(page).to have_field(:zip)
-      expect(page).to have_button('Create Shelter')
-    end
-  end
-
-  it 'can create a new shelter' do
+RSpec.describe 'As a user on the new shelter form page', type: :feature do
+  it 'I can create a new shelter' do
     visit '/shelters/new'
 
     within('.new_shelter_form') do
@@ -27,5 +14,15 @@ RSpec.describe 'new shelter form page', type: :feature do
     end
     expect(current_path).to eql('/shelters')
     expect(page).to have_content(Shelter.last.name)
+  end
+
+  it "I can click on a link in the nav bar that can take me to the pet index" do
+    visit "/shelters/new"
+
+    within(".navbar") do
+      click_link("Pets Index")
+    end
+
+    expect(current_path).to eql("/pets")
   end
 end

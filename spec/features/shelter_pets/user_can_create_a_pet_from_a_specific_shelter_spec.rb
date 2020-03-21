@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "As a user", type: :feature do
+RSpec.describe "As a user on the new pet page", type: :feature do
   it "I can create a new pet that belongs to a particular shelter" do
     shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
                                address: "580 McIntyre St",
@@ -33,5 +33,21 @@ RSpec.describe "As a user", type: :feature do
         expect(new_pet.adoption_status).to eql("adoptable")
       end
     end
+  end
+
+  it "I can click on a link in the nav bar that can take me to the pet index" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+
+    visit "/shelters/#{shelter_1.id}/pets/new"
+
+    within(".navbar") do
+      click_link("Pets Index")
+    end
+
+    expect(current_path).to eql("/pets")
   end
 end
