@@ -39,19 +39,19 @@ RSpec.describe "as a user", type: :feature do
 
     visit "/shelters/#{shelter_1.id}/pets"
 
-    expect(page).to have_css("#img-#{pet_1.id}")
+    expect(page).to have_css("#petimg-#{pet_1.id}")
     expect(page).to have_content(pet_1.name)
     expect(page).to have_content(pet_1.approximate_age)
     expect(page).to have_content(pet_1.sex)
-    expect(page).to have_css("#img-#{pet_2.id}")
+    expect(page).to have_css("#petimg-#{pet_2.id}")
     expect(page).to have_content(pet_2.name)
     expect(page).to have_content(pet_2.approximate_age)
     expect(page).to have_content(pet_2.sex)
-    expect(page).to have_no_css("#img-#{pet_3.id}")
+    expect(page).to have_no_css("#petimg-#{pet_3.id}")
     expect(page).to have_no_content(pet_3.name)
     expect(page).to have_no_content(pet_3.approximate_age)
     expect(page).to have_no_content(pet_3.sex)
-    expect(page).to have_no_css("#img-#{pet_4.id}")
+    expect(page).to have_no_css("#petimg-#{pet_4.id}")
     expect(page).to have_no_content(pet_4.name)
     expect(page).to have_no_content(pet_4.approximate_age)
     expect(page).to have_no_content(pet_4.sex)
