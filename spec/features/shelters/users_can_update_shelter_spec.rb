@@ -16,7 +16,7 @@ RSpec.describe 'A a user o the update shelter page', type: :feature do
       fill_in :city, with: "Updated City"
       fill_in :state ,with: "Updated State"
       fill_in :zip, with: "Updated Zip"
-      click_button('Submit Updates')
+      click_button('Update Shelter')
     end
     expect(current_path).to eql("/shelters/#{shelter.id}")
 
