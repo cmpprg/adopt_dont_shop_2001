@@ -95,4 +95,18 @@ RSpec.describe 'As a user the shelter show page', type: :feature do
 
     expect(current_path).to eql("/shelters")
   end
+
+  it "I can click on shelters pets link and it will take me there" do
+    shelter_1 = Shelter.create(name:    "Foothills Animal Shelter",
+                               address: "580 McIntyre St",
+                               city:    "Golden",
+                               state:   "CO",
+                               zip:     "80401")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    click_link("Shelter's Pets")
+
+    expect(current_path).to eql("/shelters/#{shelter_1.id}/pets")
+  end
 end
