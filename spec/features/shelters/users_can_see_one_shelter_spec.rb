@@ -18,10 +18,10 @@ RSpec.describe 'As a user the shelter show page', type: :feature do
     within('#title') do
       expect(page).to have_content(shelter_1.name)
     end
-    within('#address p:first-child') do
+    within('.shelter_show_address p:first-child') do
       expect(page).to have_content("Address: #{shelter_1.address}")
     end
-    within('#address p:nth-child(2)') do
+    within('.shelter_show_address p:nth-child(2)') do
       expect(page).to have_content("#{shelter_1.city}, #{shelter_1.state} #{shelter_1.zip}")
     end
     expect(page).to have_no_content(shelter_2.name)
@@ -62,6 +62,8 @@ RSpec.describe 'As a user the shelter show page', type: :feature do
     expect(current_path).to eql('/shelters')
     expect(page).to have_content("#{shelter_2.name}")
     expect(page).to have_no_content("#{shelter_1.name}")
+
+    expect(Shelter.exists?(shelter_1.id)).to eql(false)
   end
 
   it "I can click on a link in the nav bar that can take me to the pet index" do
