@@ -60,12 +60,7 @@ h1{
   text-align:center;
   font-size:3em;
 }
-img{
-  width:auto;
-  height:100%;
-  border-radius: 0% 50% 50% 0%;
-  float:right;
-}
+
 .pet_container{
   height:20em;
 }
@@ -77,6 +72,12 @@ img{
   float:left;
   width:33.3%;
   height:100%;
+}
+.pet_img img{
+  width:auto;
+  height:100%;
+  border-radius: 0% 50% 50% 0%;
+  float:right;
 }
 .pet_info{
   display:inline;
@@ -155,4 +156,46 @@ img{
 }
 .input_field label{
   margin-left:10%;
+}
+
+/* pet show */
+.pet_show_container{
+  margin:2%;
+  background-color:rgba(0, 225, 225, .1);
+  border-radius: 10%;
+}
+.pet_show_img{
+  width:100%;
+  display:block
+}
+.pet_show_img img{
+  width:100%;
+  height:auto;
+  border-radius: 10%;
+}
+.pet_show_info{
+  float:left;
+  width:50%;
+  display:inline;
+  font-size:25px;
+  text-align:center;
+}
+.pet_show_links{
+  float:left;
+  width:50%;
+  height:100%;
+  display:inline;
+  text-align:center;
+}
+.pet_show_links p{
+  display:block;
+  margin-top:3em;
+}
+.pet_show_links a{
+  color:rgba(0, 0, 0, .4);
+  font-size:25px;
+  text-decoration:none;
+}
+.pet_show_links a:hover{
+  color:rgba(0, 0, 0, .7)
 }
