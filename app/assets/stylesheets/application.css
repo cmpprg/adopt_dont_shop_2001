@@ -13,3 +13,102 @@
  *= require_tree .
  *= require_self
  */
+html {
+  box-sizing:border-box;
+}
+body {
+  margin:0px;
+}
+
+/* navbar */
+.navbar{
+  height:100px;
+  background-color:rgba(0, 0, 225, .2);
+  color:rgba(0, 0, 0, 1);
+ }
+#main_title{
+  margin-top:.75em;
+  margin-left: 5%;
+  display:inline-block;
+  color:rgba(0, 0, 150, .7);
+  text-decoration:underline;
+  font-size:2.1em;
+}
+.nav_links{
+  height:50%;
+  display:inline;
+  float:right;
+  margin-right:5%;
+  font-size:24px;
+  padding-top:1.2em;
+}
+.navbar a{
+  text-decoration: none;
+  color:rgba(0, 0, 0, .3);
+  font-size:1.1em;
+ }
+.navbar a:hover{
+  padding-top:.5em;
+  font-size:40px;
+  color:rgba(0, 0, 0, .5);
+ }
+
+/* pets content */
+h1{
+  width:auto;
+  text-align:center;
+  font-size:3em;
+}
+img{
+  width:auto;
+  height:100%;
+  border-radius: 0% 50% 50% 0%;
+  float:right;
+}
+.pet_container{
+  height:20em;
+}
+.pet_container:hover{
+  background-color:rgba(0, 225, 225, .2)
+}
+.pet_img{
+  display:inline-block;
+  float:left;
+  width:33.3%;
+  height:100%;
+}
+.pet_info{
+  display:inline;
+  float:left;
+  width:33.3%;
+  height:100%;
+  text-align:center;
+  font-size:25px;
+}
+.pet_info a{
+  text-decoration:none;
+  color:rgba(0, 0, 0, .4);
+  width:fit-content;
+}
+.pet_info a:hover{
+  color:rgba(0, 0, 0, .7)
+}
+.pet_crud_links{
+  display:inline;
+  float:left;
+  width:33.3%;
+  height:100%;
+  text-align:center;
+}
+.pet_crud_links p{
+  display:block;
+  margin-top:4.5em;
+}
+.pet_crud_links a{
+  color:rgba(0, 0, 0, .4);
+  font-size:25px;
+  text-decoration:none;
+}
+.pet_crud_links a:hover{
+  color:rgba(0, 0, 0, .7)
+}
